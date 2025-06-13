@@ -132,3 +132,51 @@ void delay_ms(uint16_t t)
 
 ![2-i](img/2-i.png)
 
+### ii. (5 pts) 編寫程式讀取超音波模組數據。
+
+![2-ii-problem](img/2-ii-problem.png)
+
+---
+
+**Ans:**
+
+程式碼 ([projects/2-ii/Src/main.c](projects/2-ii/Src/main.c))：
+
+```c
+#include "stm32f10x.h"
+void delay_us(uint16_t t);
+void delay_ms(uint16_t t);
+
+int main()
+{
+    RCC->APB2ENR |= 0xFC; // 啟用 GPIO 連接埠的 clock
+
+    GPIOA->CRL = 0x33333343; // PA0, PA2 ~ PA7 outputs, PA1 input
+    GPIOA->CRH = 0x33333333; // PA8 to PA15 outputs
+
+    delay_ms(100); // 緩衝100ms
+
+    GPIOA->ODR = 1 << 0; // PA0 on
+    delay_us(10);
+    GPIOA->ODR = 0 << 0; // PA0 off
+}
+
+void delay_us(uint16_t t)
+{
+    volatile unsigned long l = 0;
+
+    for (uint16_t i = 0; i < t; i++)
+        for (l = 0; l < 7; l++)
+            ;
+}
+void delay_ms(uint16_t t)
+{
+    volatile unsigned long l = 0;
+
+    for (uint16_t i = 0; i < t; i++)
+        for (l = 0; l < 9000; l++)
+            ;
+}
+```
+
+![2-ii](img/2-ii.png)
