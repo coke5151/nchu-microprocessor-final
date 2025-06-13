@@ -373,3 +373,28 @@ void usart1_sendStr(char* str)
 ```
 
 ![4-ii](img/4-ii.png)
+
+## 5. (55 pts) 下列請以 Interrupt 與 Timer 完成系統整合實現停車場系統（有關時間的都要用 Timer 或 SysTick 實現）：
+### i. 超音波感測（建議使用 Timer2）
+#### A. (5 pts) 入口每 5 秒產生一個 trig 檢測是否有車子要進來。
+#### B. (5 pts) 出口先延遲 2.5 秒再每 5 秒產生一個 trig 是否有車子要出去。
+
+每 5 秒產生一次 trig 的示意圖如下：
+
+![trig-per-5-seconds](img/5-trig-per-5-seconds.png)
+
+入口跟出口的 trig 時間相差 2.5 秒的示意圖如下：
+
+![entry-exit-2.5-seconds](img/entry-exit-2.5-seconds.png)
+
+#### C. (15 pts) 使用中斷捕 Echo 上升時間和下降時間，然後透過下面公式轉換成公尺。（建議使用 SysTick 中斷，出來的結果與實際有誤差是正常現象）
+
+$Echo signal duration * 343 / 2\ meters$
+
+![actual-vs-calculating-distance](img/actual-vs-calculating-distance.png)
+
+### ii. 伺服馬達閘門（建議使用 Timer1 和 Timer2）
+#### A. (10 pts) 當出入口的 Echo 讀到的值小於 100m，相對應的閘門要打開讓車子進出，然後關閉閘門（伺服馬達打開和關閉閘門 90 度轉動）。
+#### B. (10 pts) 車輛進入時剩餘車位減 1，車輛出去時剩餘車輛位加 1，並將剩餘車位數顯示於 2-digit 七位顯示器（車位數初始值 20）。
+#### C. (5 pts) 當車位停滿時，七段顯示器顯示 00 並以一秒為週期進行閃爍（連續重複亮 0.5 sec 與暗 0.5 sec）。此時，閘門維持不動。
+#### D. (5 pts) 透過藍芽 (USART1) 傳送目前車輛數目給 IO Virtual Term（轉成兩個數字的 ASCII Code 後傳送）。
