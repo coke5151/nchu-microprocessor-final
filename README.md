@@ -33,7 +33,7 @@ int main()
 
 ![1-i ans](img/1-i-ans.png)
 
-### ii. (5 pts) 根據圖一完成表一：(Low 為輸出低電伅 0，High 為輸出高電位 1)
+### ii. (5 pts) 根據圖一完成表一：(Low 為輸出低電壓 0，High 為輸出高電位 1)
 
 ![1-ii](img/1-ii.png)
 
