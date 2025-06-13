@@ -180,3 +180,35 @@ void delay_ms(uint16_t t)
 ```
 
 ![2-ii](img/2-ii.png)
+
+## 3. (10 pts) 下列請以 TIM2 (PWM) 完成，伺服馬達型號為 SG90：
+### i. (5 pts) Generate a square wave with a period 20ms.
+
+![3-i-problem](img/3-i-problem.png)
+
+---
+
+**Ans:**
+
+程式碼 ([projects/3-i/Src/main.c](projects/3-i/Src/main.c))：
+
+```c
+#include "stm32f10x.h"
+
+int main()
+{
+    RCC->APB2ENR |= 0xFC; // 啟用 GPIO 連接埠的 clock
+    RCC->APB1ENR |= (1 << 0);
+    GPIOA->CRL |= 0xB;
+    TIM2->CCER = 0x1;
+    TIM2->CCMR1 |= 0x60;
+    TIM2->PSC = 72 - 1;
+    TIM2->ARR = 20000 - 1;
+    TIM2->CCR1 = 5000;
+    TIM2->CR1 = 1;
+
+    while (1) { }
+}
+```
+
+![3-i](img/3-i.png)
