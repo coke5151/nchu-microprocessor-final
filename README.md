@@ -1,2 +1,77 @@
-# nchu-microprocessor-final
-【微處理機】中興大學課程期堂專題
+# 【微處理機】中興大學課程期堂專題  
+## 繳交資訊
+- 電資學士班 侯竣奇 (4112064214)
+- 所有程式專案可在 projects 資料夾中找到，附有 `.pcf` 檔
+- 有疑問可來信 [houjunqimail@gmail.com](mailto:houjunqimail@gmail.com)
+
+## 1. (15 pts) 下列請以 GPIOB 完成，七段顯示器型號為 DC56-11EWA：
+### i. (5 pts) 將所有 pin 設定為 output mode，並使 pin 0~15 輸出為 0xAAAA。
+
+![1-i 七段顯示器](img/1-i.png)
+
+---
+
+**Ans:**
+
+```c
+#include "stm32f10x.h"
+
+int main()
+{
+	RCC->APB2ENR |= 0xFC; // 啟用 GPIO 連接埠的 clock
+
+	GPIOB->CRL = 0x33333333; // PB0 to PB7 outputs
+	GPIOB->CRH = 0x33333333; // PB8 to PB15 outputs
+
+	while (1) {
+		GPIOB->ODR = 0xAAAA;
+	}
+}
+```
+
+![1-i ans](img/1-i-ans.png)
+
+### ii. (5 pts) 根據圖一完成表一：(Low 為輸出低電伅 0，High 為輸出高電位 1)
+
+![1-ii](img/1-ii.png)
+
+---
+
+**Ans:**
+
+|     |     |     |     |     |     |     |     |     |           |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --------- |
+|     | x   | g   | f   | e   | d   | c   | b   | a   | PORTB_ODR |
+| 0   | L   | L   | H   | H   | H   | H   | H   | H   | 0x3F      |
+| 1   | L   | L   | L   | L   | L   | H   | H   | L   | 0x6       |
+| 2   | L   | H   | L   | H   | H   | L   | H   | H   | 0x5B      |
+| 3   | L   | H   | L   | L   | H   | H   | H   | H   | 0x4F      |
+| 4   | L   | H   | H   | L   | L   | H   | H   | L   | 0x66      |
+| 5   | L   | H   | H   | L   | H   | H   | L   | H   | 0x6D      |
+| 6   | L   | H   | H   | H   | H   | H   | L   | H   | 0x7D      |
+| 7   | L   | L   | H   | L   | L   | H   | H   | H   | 0x27      |
+| 8   | L   | H   | H   | H   | H   | H   | H   | H   | 0x7F      |
+| 9   | L   | H   | H   | L   | H   | H   | H   | H   | 0x6F      |
+
+### iii. (5 pts) 編寫程式使七段顯示器顯示 20。
+
+**Ans:**
+
+```c
+#include "stm32f10x.h"
+
+int main()
+{
+	RCC->APB2ENR |= 0xFC; // 啟用 GPIO 連接埠的 clock
+
+	GPIOB->CRL = 0x33333333; // PB0 to PB7 outputs
+	GPIOB->CRH = 0x33333333; // PB8 to PB15 outputs
+
+	while (1) {
+		GPIOB->ODR = 0x3F5B;
+	}
+}
+```
+
+![1-iii 20](img/1-iii.png)
+
