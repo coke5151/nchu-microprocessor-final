@@ -13,6 +13,8 @@
 
 **Ans:**
 
+程式碼 ([projects/1-i/Src/main.c](projects/1-i/Src/main.c))：
+
 ```c
 #include "stm32f10x.h"
 
@@ -56,6 +58,8 @@ int main()
 ### iii. (5 pts) 編寫程式使七段顯示器顯示 20。
 
 **Ans:**
+
+程式碼 ([projects/1-iii/Src/main.c](projects/1-iii/Src/main.c))：
 
 ```c
 #include "stm32f10x.h"
