@@ -123,7 +123,7 @@ int main()
             // 檢測出口車輛
             else if (g_exit_distance < kDistanceThreshold)
             {
-                g_last_triggered_distance = g_entry_distance;
+                g_last_triggered_distance = g_exit_distance;
                 g_system_state = STATE_EXIT_IN_PROGRESS;
                 g_gate_action_time = g_ms_ticks; // 記錄目前的時間
                 g_exit_distance = 99.0f; // 清除距離
@@ -179,8 +179,8 @@ void GPIO_config(void)
 
     // 超音波感測器
     GPIOA->CRL &= 0xFFF0000F;  // 清除 PA1, 2, 3, 4 的設定
-    GPIOA->CRL |= (0x8 << 4);  // PA1 - 入口感測器 Echo，設定成 Input with pull-down
-    GPIOA->CRL |= (0x8 << 12); // PA3 - 出口感測器 Echo，設定成 Input with pull-down
+    GPIOA->CRL |= (0x4 << 4);  // PA1 - 入口感測器 Echo，設定成 Input floating
+    GPIOA->CRL |= (0x4 << 12); // PA3 - 出口感測器 Echo，設定成 Input floating
     GPIOA->ODR &= ~((1 << 1) | (1 << 3)); // 設定下拉電阻
 
     GPIOA->CRL |= (0x3 << 8);  // PA2 - 入口感測器 Trig，設定成 Output
@@ -193,7 +193,7 @@ void GPIO_config(void)
     // USART1
     GPIOA->CRH &= ~(0xFF << 4); // 清除 PA9, PA10 的設定
     GPIOA->CRH |= (0x0B << 4); // PA9: 50MHz, AF output push-pull
-    GPIOA->CRH |= (0x04 << 8); // PA10: Input with pull-up / pull-down
+    GPIOA->CRH |= (0x04 << 8); // PA10: Input floating
 }
 
 void TIM1_PWM_config(void)
@@ -209,6 +209,7 @@ void TIM1_PWM_config(void)
 
     TIM1->CCR1 = kServoOpen; // 調整到預設位置
     TIM1->CR1 = 1;
+    TIM1->BDTR |= TIM_BDTR_MOE;
 }
 
 void TIM2_PWM_config(void)
@@ -224,6 +225,7 @@ void TIM2_PWM_config(void)
 
     TIM2->CCR1 = kServoOpen; // 調整到預設位置
     TIM2->CR1 = 1;
+    TIM2->BDTR |= TIM_BDTR_MOE;
 }
 
 void USART1_config(void)
