@@ -16,7 +16,7 @@ C_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Libraries/CMSIS/CM3/CoreSupport/%.o Libraries/CMSIS/CM3/CoreSupport/%.su Libraries/CMSIS/CM3/CoreSupport/%.cyclo: ../Libraries/CMSIS/CM3/CoreSupport/%.c Libraries/CMSIS/CM3/CoreSupport/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVE -c -I../Inc -I"C:/Users/user/Desktop/labs/4-ii/Libraries/STM32F10x_StdPeriph_Driver/inc" -I"C:/Users/user/Desktop/labs/4-ii/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x" -I"C:/Users/user/Desktop/labs/4-ii/Libraries/CMSIS/CM3/CoreSupport" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVE -c -I../Inc -I"D:/Repos/nchu-microprocessor-final/projects/5/Libraries/STM32F10x_StdPeriph_Driver/inc" -I"D:/Repos/nchu-microprocessor-final/projects/5/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x" -I"D:/Repos/nchu-microprocessor-final/projects/5/Libraries/CMSIS/CM3/CoreSupport" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 
 clean: clean-Libraries-2f-CMSIS-2f-CM3-2f-CoreSupport
 
