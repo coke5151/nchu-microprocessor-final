@@ -3040,19 +3040,19 @@ LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_info     0x00000000     0x125b
+.debug_info     0x00000000     0x1248
  .debug_info    0x00000000      0x422 ./Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/system_stm32f10x.o
- .debug_info    0x00000422      0xba0 ./Src/main.o
- .debug_info    0x00000fc2      0x101 ./Src/stm32f10x_it.o
- .debug_info    0x000010c3      0x168 ./Src/sysmem.o
- .debug_info    0x0000122b       0x30 ./Startup/startup_stm32f103c8tx.o
+ .debug_info    0x00000422      0xb8d ./Src/main.o
+ .debug_info    0x00000faf      0x101 ./Src/stm32f10x_it.o
+ .debug_info    0x000010b0      0x168 ./Src/sysmem.o
+ .debug_info    0x00001218       0x30 ./Startup/startup_stm32f103c8tx.o
 
-.debug_abbrev   0x00000000      0x536
+.debug_abbrev   0x00000000      0x521
  .debug_abbrev  0x00000000      0x1b9 ./Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/system_stm32f10x.o
- .debug_abbrev  0x000001b9      0x256 ./Src/main.o
- .debug_abbrev  0x0000040f       0x47 ./Src/stm32f10x_it.o
- .debug_abbrev  0x00000456       0xbc ./Src/sysmem.o
- .debug_abbrev  0x00000512       0x24 ./Startup/startup_stm32f103c8tx.o
+ .debug_abbrev  0x000001b9      0x241 ./Src/main.o
+ .debug_abbrev  0x000003fa       0x47 ./Src/stm32f10x_it.o
+ .debug_abbrev  0x00000441       0xbc ./Src/sysmem.o
+ .debug_abbrev  0x000004fd       0x24 ./Startup/startup_stm32f103c8tx.o
 
 .debug_aranges  0x00000000      0x160
  .debug_aranges

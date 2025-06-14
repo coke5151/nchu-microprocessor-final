@@ -60,6 +60,7 @@ void delay_ms(uint16_t t);
 void delay_us(uint16_t t);
 void usart1_send_str(char *str);
 void update_bluetooth_data(void);
+void update_display_number(void);
 
 int main()
 {
