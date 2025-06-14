@@ -11,16 +11,16 @@
  *   - PA3: ECHO (Input, EXIT3)
  *
  * - 伺服馬達 (PWM)
- *   - PA8:  入口 (TIM1_CH1)
- *   - PA11: 出口 (TIM1_CH2)
+ *   - PA8: 入口 (TIM1_CH1)
+ *   - PA9: 出口 (TIM1_CH2)
  *
  * - 7 段顯示器
  *   - PB8 Digit1
  *   - PB9 Digit2
  *
  * - Bluetooth
- *   - PA9: USART1_TX
- *   - PA10: USART1_RX
+ *   - PB6: USART1_TX
+ *   - PB7: USART1_RX
  */
 
 void delay_ms(uint16_t t);
