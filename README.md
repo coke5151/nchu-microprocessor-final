@@ -461,7 +461,7 @@ $$
 
 ![toggle-blinking-pulseview](img/toggle-blinking-pulseview.png)
 
-![toggle-blinking-pulseview-2](toggle-blinking-pulseview-2.png)
+![toggle-blinking-pulseview-2](img/toggle-blinking-pulseview-2.png)
 
 由波形可以看到，7 段顯示器每次閃爍的週期是 1 秒，且亮 0.5 秒、暗 0.5 秒。
 
