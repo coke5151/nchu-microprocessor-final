@@ -381,7 +381,7 @@ void usart1_sendStr(char* str)
 
 ---
 
-Ans:
+**Ans:**
 
 ![entry-trig-per-5s-ans](img/5-ans-entry-trig-per-5s.png)
 
@@ -399,7 +399,7 @@ Ans:
 
 ---
 
-Ans:
+**Ans:**
 
 圖中的 PC14 即為出口的 Trig：
 
@@ -417,7 +417,7 @@ $Echo\ signal\ duration * 343 / 2\ meters$
 
 ---
 
-Ans:
+**Ans:**
 
 下圖可以看到由 PA2（入口的 Echo）可以得到時間是 3.254 ms，經由公式可以得到距離 55.8 cm，與超音波感測器之設定值 56 相近：
 
@@ -432,7 +432,7 @@ $$
 
 ---
 
-Ans:
+**Ans:**
 
 （附上一張變化中的截圖，詳情請見錄影）
 
@@ -442,7 +442,7 @@ Ans:
 
 ---
 
-Ans:
+**Ans:**
 
 閃爍中的示意截圖如下，詳情可見影片：
 
@@ -452,7 +452,7 @@ Ans:
 
 ---
 
-Ans:
+**Ans:**
 
 我們用 VCD Dump 來觀察 PB0、PB1、PB8（由於是閃爍 00，所以 PB0~PB6、PB8~PB14 都會一起上下波動）：
 
@@ -466,7 +466,7 @@ Ans:
 
 ---
 
-Ans:
+**Ans:**
 
 由下圖可以看到，持續印出 Current Cars 的同時，當車位剩 19 輛車時，也正確顯示目前車輛數是 01 輛：
 
