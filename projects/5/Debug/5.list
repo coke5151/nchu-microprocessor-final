@@ -1422,7 +1422,6 @@ int main(void)
  8000e78:	61d3      	str	r3, [r2, #28]
 
     // --- GPIO 初始化 ---
-    // GPIO 的配置暫存器 (CRL, CRH) 使用數值進行複雜設定，此處保留原樣
     GPIOB->CRL = 0x33333333;
  8000e7a:	4ba8      	ldr	r3, [pc, #672]	@ (800111c <main+0x2c4>)
  8000e7c:	f04f 3233 	mov.w	r2, #858993459	@ 0x33333333
@@ -1470,7 +1469,7 @@ int main(void)
  8000ed4:	6053      	str	r3, [r2, #4]
 
     // --- SysTick 初始化 (10µs tick, 每 tick 將全域的 g_us_ticks += 10) ---
-    SysTick->LOAD = (kSysClockFreq / 100000) - 1; // 27 - 1
+    SysTick->LOAD = (kSysClockFreq / 100000) - 1;
  8000ed6:	4b94      	ldr	r3, [pc, #592]	@ (8001128 <main+0x2d0>)
  8000ed8:	f240 120d 	movw	r2, #269	@ 0x10d
  8000edc:	605a      	str	r2, [r3, #4]
@@ -1485,7 +1484,7 @@ int main(void)
  8000ee8:	601a      	str	r2, [r3, #0]
 
     // --- TIM1 & TIM2 PWM 初始化 ---
-    TIM1->PSC = (kTim1ClockFreq / 1000000) - 1; // 144 - 1
+    TIM1->PSC = (kTim1ClockFreq / 1000000) - 1;
  8000eea:	4b90      	ldr	r3, [pc, #576]	@ (800112c <main+0x2d4>)
  8000eec:	228f      	movs	r2, #143	@ 0x8f
  8000eee:	851a      	strh	r2, [r3, #40]	@ 0x28
@@ -1515,7 +1514,7 @@ int main(void)
  8000f18:	2281      	movs	r2, #129	@ 0x81
  8000f1a:	801a      	strh	r2, [r3, #0]
 
-    TIM2->PSC = (kTim2ClockFreq / 1000000) - 1; // 72 - 1
+    TIM2->PSC = (kTim2ClockFreq / 1000000) - 1;
  8000f1c:	f04f 4380 	mov.w	r3, #1073741824	@ 0x40000000
  8000f20:	2247      	movs	r2, #71	@ 0x47
  8000f22:	851a      	strh	r2, [r3, #40]	@ 0x28
@@ -1542,7 +1541,7 @@ int main(void)
  8000f4e:	801a      	strh	r2, [r3, #0]
 
     // --- USART1 初始化 ---
-    USART1->BRR = kUsart1ClockFreq / 9600; // 7500
+    USART1->BRR = kUsart1ClockFreq / 9600;
  8000f50:	4b77      	ldr	r3, [pc, #476]	@ (8001130 <main+0x2d8>)
  8000f52:	f641 524c 	movw	r2, #7500	@ 0x1d4c
  8000f56:	811a      	strh	r2, [r3, #8]
@@ -1581,13 +1580,13 @@ int main(void)
  8000f8a:	f043 0306 	orr.w	r3, r3, #6
  8000f8e:	60d3      	str	r3, [r2, #12]
     // 使用 IRQn 編號來啟用中斷
-    NVIC->ISER[0] |= (1U << EXTI1_IRQn) | (1U << EXTI2_IRQn); // 原為 (1 << 7) | (1 << 8)
+    NVIC->ISER[0] |= (1U << EXTI1_IRQn) | (1U << EXTI2_IRQn);
  8000f90:	4b6a      	ldr	r3, [pc, #424]	@ (800113c <main+0x2e4>)
  8000f92:	681b      	ldr	r3, [r3, #0]
  8000f94:	4a69      	ldr	r2, [pc, #420]	@ (800113c <main+0x2e4>)
  8000f96:	f443 73c0 	orr.w	r3, r3, #384	@ 0x180
  8000f9a:	6013      	str	r3, [r2, #0]
-    NVIC->ISER[1] |= (1U << (USART1_IRQn - 32));        // 啟用 USART1 中斷 (IRQ 37)
+    NVIC->ISER[1] |= (1U << (USART1_IRQn - 32));
  8000f9c:	4b67      	ldr	r3, [pc, #412]	@ (800113c <main+0x2e4>)
  8000f9e:	685b      	ldr	r3, [r3, #4]
  8000fa0:	4a66      	ldr	r2, [pc, #408]	@ (800113c <main+0x2e4>)
@@ -2270,7 +2269,7 @@ void usart1_send_str(char *str)
  800144a:	d1e4      	bne.n	8001416 <usart1_send_str+0xa>
     }
     // 啟用 TXE 中斷，開始發送過程
-    USART1->CR1 |= USART_CR1_TXEIE; // 原為 (1 << 7)
+    USART1->CR1 |= USART_CR1_TXEIE;
  800144c:	4b08      	ldr	r3, [pc, #32]	@ (8001470 <usart1_send_str+0x64>)
  800144e:	899b      	ldrh	r3, [r3, #12]
  8001450:	b29b      	uxth	r3, r3

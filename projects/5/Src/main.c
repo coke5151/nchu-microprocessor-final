@@ -76,7 +76,6 @@ int main(void)
     RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
 
     // --- GPIO 初始化 ---
-    // GPIO 的配置暫存器 (CRL, CRH) 使用數值進行複雜設定，此處保留原樣
     GPIOB->CRL = 0x33333333;
     GPIOB->CRH = 0x33333333;
     GPIOC->CRH = (GPIOC->CRH & ~0x0FF00000) | 0x03300000;
@@ -89,13 +88,13 @@ int main(void)
             | (0xB << 0);
 
     // --- SysTick 初始化 (10µs tick, 每 tick 將全域的 g_us_ticks += 10) ---
-    SysTick->LOAD = (kSysClockFreq / 100000) - 1; // 27 - 1
+    SysTick->LOAD = (kSysClockFreq / 100000) - 1;
     SysTick->VAL = 0;
     // SysTick 啟用計數器、啟用中斷
     SysTick->CTRL = SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_TICKINT_Msk;
 
     // --- TIM1 & TIM2 PWM 初始化 ---
-    TIM1->PSC = (kTim1ClockFreq / 1000000) - 1; // 144 - 1
+    TIM1->PSC = (kTim1ClockFreq / 1000000) - 1;
     TIM1->ARR = 20000 - 1;
     TIM1->CCR1 = kServoEntryClosed;
 
@@ -104,7 +103,7 @@ int main(void)
     TIM1->BDTR = TIM_BDTR_MOE;
     TIM1->CR1 = TIM_CR1_ARPE | TIM_CR1_CEN;
 
-    TIM2->PSC = (kTim2ClockFreq / 1000000) - 1; // 72 - 1
+    TIM2->PSC = (kTim2ClockFreq / 1000000) - 1;
     TIM2->ARR = 20000 - 1;
     TIM2->CCR1 = kServoExitClosed;
 
@@ -113,7 +112,7 @@ int main(void)
     TIM2->CR1 = TIM_CR1_ARPE | TIM_CR1_CEN;
 
     // --- USART1 初始化 ---
-    USART1->BRR = kUsart1ClockFreq / 9600; // 7500
+    USART1->BRR = kUsart1ClockFreq / 9600;
     // 啟用 USART、傳送器、接收器及接收中斷
     USART1->CR1 = USART_CR1_UE | USART_CR1_RE | USART_CR1_TE | USART_CR1_RXNEIE;
 
@@ -126,8 +125,8 @@ int main(void)
     // 設定下降沿觸發
     EXTI->FTSR |= EXTI_FTSR_TR1 | EXTI_FTSR_TR2;
     // 使用 IRQn 編號來啟用中斷
-    NVIC->ISER[0] |= (1U << EXTI1_IRQn) | (1U << EXTI2_IRQn); // 原為 (1 << 7) | (1 << 8)
-    NVIC->ISER[1] |= (1U << (USART1_IRQn - 32));        // 啟用 USART1 中斷 (IRQ 37)
+    NVIC->ISER[0] |= (1U << EXTI1_IRQn) | (1U << EXTI2_IRQn);
+    NVIC->ISER[1] |= (1U << (USART1_IRQn - 32));
 
     // --- 主迴圈 ---
     uint32_t last_bt_send_time_us = 0;
@@ -309,7 +308,7 @@ void usart1_send_str(char *str)
         g_tx_head = (g_tx_head + 1) % kTxBufferSize;
     }
     // 啟用 TXE 中斷，開始發送過程
-    USART1->CR1 |= USART_CR1_TXEIE; // 原為 (1 << 7)
+    USART1->CR1 |= USART_CR1_TXEIE;
 }
 
 void update_display(int count)
