@@ -376,6 +376,9 @@ void usart1_sendStr(char* str)
 ![4-ii](img/4-ii.png)
 
 ## 5. (55 pts) 下列請以 Interrupt 與 Timer 完成系統整合實現停車場系統（有關時間的都要用 Timer 或 SysTick 實現）：
+
+> 第 5 題的專案程式碼在 [projects/5](projects/5) 資料夾中。
+
 ### i. 超音波感測（建議使用 Timer2）
 #### A. (5 pts) 入口每 5 秒產生一個 trig 檢測是否有車子要進來。
 
