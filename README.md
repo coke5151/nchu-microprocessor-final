@@ -4,6 +4,7 @@
 - 所有程式專案可在 projects 資料夾中找到，附有 `.pcf` 檔
 - 有疑問可來信 [houjunqimail@gmail.com](mailto:houjunqimail@gmail.com)
 - 本報告同步發佈於 Github ([coke5151/nchu-microprocessor-final](https://github.com/coke5151/nchu-microprocessor-final/))
+- 講解影片[發佈於 Youtube](https://youtu.be/ZE46jrObXr4)
 
 ## 1. (15 pts) 下列請以 GPIOB 完成，七段顯示器型號為 DC56-11EWA：
 ### i. (5 pts) 將所有 pin 設定為 output mode，並使 pin 0~15 輸出為 0xAAAA。
