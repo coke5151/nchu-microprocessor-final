@@ -457,7 +457,7 @@ $$
 
 **Ans:**
 
-我們用 VCD Dump 來觀察 PB0、PB1、PB8（由於是閃爍 00，所以 PB0~PB6、PB8~PB14 都會一起上下波動）：
+我們用 VCD Dump 來觀察 PB0、PB1、PB8（由於是閃爍 00，所以 PB0 ~ PB6、PB8 ~ PB14 都會一起上下波動）：
 
 ![toggle-blinking-pulseview](img/toggle-blinking-pulseview.png)
 
